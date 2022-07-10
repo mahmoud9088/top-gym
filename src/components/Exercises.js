@@ -67,17 +67,24 @@ const Exercises = ({
                       console.log('filteredExercises', filteredExercises)
                       setFilterByBodyPart(filteredExercises)
                     }}>
-                    <img
-                      src={imgSrc[index]}
-                      alt="neck"
-                      style={{
-                        width: '82px',
-                        height: '82px',
-                      }}
-                    />
-                    <Typography sx={{ color: '#fff', mt: '20px' }}>
-                      {bodyPart}
-                    </Typography>
+                    <Box
+                      component={'a'}
+                      href="#exercises"
+                      sx={{ textDecoration: 'none', color: '#fff' }}>
+                      <img
+                        src={imgSrc[index]}
+                        alt="neck"
+                        style={{
+                          width: '82px',
+                          height: '82px',
+                          cursor: 'pointer',
+                        }}
+                      />
+                      <Typography
+                        sx={{ color: '#fff', mt: '20px', cursor: 'pointer' }}>
+                        {bodyPart}
+                      </Typography>
+                    </Box>
                   </Grid>
                 )
               })

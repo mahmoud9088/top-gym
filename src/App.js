@@ -31,12 +31,13 @@ const App = () => {
       setFilterByBodyPart(data)
       return data
     }
+
     fetchBodyPartList()
     fetchExercises()
   }, [])
   return (
     <Box>
-      <Navbar />
+      <Navbar exercises={exercises} setFilterByBodyPart={setFilterByBodyPart} />
       <Routes>
         <Route
           path="/"

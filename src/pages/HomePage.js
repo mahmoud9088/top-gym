@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Exercises from '../components/Exercises'
 import HomeSlider from '../components/HomeSlider'
 

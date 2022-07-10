@@ -16,6 +16,7 @@ const DisplayExercises = ({ exercises, filterByBodyPart }) => {
   const [page, setPage] = React.useState(1)
   const handleChange = (event, value) => {
     setPage(value)
+    document.getElementById('exercises').scrollIntoView()
   }
   console.log('exercises:', exercises)
 
@@ -29,19 +30,25 @@ const DisplayExercises = ({ exercises, filterByBodyPart }) => {
       height="100%"
       justifyContent="center"
       alignItems="center"
+      id="exercises"
       sx={{
         backgroundImage: `url(${BgImage})`,
         backgroundSize: 'cover',
       }}>
       <Typography
-        variant="h1"
-        sx={{ color: '#fff', textAlign: 'center', width: '100%' }}>
+        variant="h2"
+        sx={{
+          color: '#fff',
+          textAlign: 'center',
+          width: '100%',
+          padding: '30px 0 0 0',
+        }}>
         Exercises
       </Typography>
       <Grid container spacing={4} justifyContent="center" m="auto" p="40px">
         {currentData().map((exercise, index) => {
           return (
-            <Grid item xs={4} key={index} textAlign="center">
+            <Grid item md={4} sm={6} key={index} textAlign="center">
               <Link
                 to={`/exercise/${exercise.id}`}
                 style={{ textDecoration: 'none' }}>
@@ -83,7 +90,6 @@ const DisplayExercises = ({ exercises, filterByBodyPart }) => {
         onChange={handleChange}
         sx={{ width: 'fit-content', margin: 'auto' }}
       />
-      {console.log(currentData())}
     </Box>
   )
 }

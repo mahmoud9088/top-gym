@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import {
   AppBar,
   Button,
@@ -31,7 +32,8 @@ const style = {
   alignItems: 'center',
 }
 
-const Navbar = () => {
+const Navbar = ({ exercises, setFilterByBodyPart }) => {
+  const [search, setSearch] = React.useState('')
   const [open, setOpen] = React.useState(false)
   const handleOpen = () => {
     setOpen(true)
@@ -45,8 +47,8 @@ const Navbar = () => {
         sx={{
           bgcolor: 'rgba(0,0,0,0.5)',
           padding: '20px',
-          // position: 'absolute',
-          // top: '0',
+          position: 'absolute',
+          top: '0',
         }}>
         <Toolbar>
           <Container
@@ -57,8 +59,20 @@ const Navbar = () => {
             }}>
             <img alt="logo" src={Logo} style={{ marginRight: '10px' }} />
             <Stack direction="row" sx={{ alignItems: 'center', gap: '50px' }}>
-              <Typography>Home</Typography>
-              <Typography>Exercises</Typography>
+              <Link
+                to="/"
+                style={{
+                  textDecoration: 'none',
+                  color: '#fff',
+                }}>
+                <Typography>Home</Typography>
+              </Link>
+              <Typography
+                component={'a'}
+                href="#exercises"
+                sx={{ textDecoration: 'none', color: '#fff' }}>
+                Exercises
+              </Typography>
               <IconButton color="inherit" onClick={handleOpen}>
                 <SearchIcon />
               </IconButton>
@@ -86,6 +100,7 @@ const Navbar = () => {
             }}>
             <InputBase
               variant="outlined"
+              onChange={(e) => setSearch(e.target.value)}
               sx={{
                 placeholder: 'Type Keywords',
                 padding: '20px',
@@ -96,7 +111,27 @@ const Navbar = () => {
                 border: 'none',
                 boxSizing: 'border-box',
               }}></InputBase>
-            <Button variant="contained" sx={{ height: '50px' }}>
+            <Button
+              variant="contained"
+              sx={{ height: '50px' }}
+              component={'a'}
+              href="#exercises"
+              onClick={() => {
+                handleClose()
+                if (search) {
+                  console.log(search)
+                  const searchedExercises = exercises.filter(
+                    (exerxise) =>
+                      exerxise.name.toLowerCase().includes(search) ||
+                      exerxise.target.toLowerCase().includes(search) ||
+                      exerxise.equipment.toLowerCase().includes(search) ||
+                      exerxise.bodyPart.toLowerCase().includes(search)
+                  )
+
+                  setFilterByBodyPart(searchedExercises)
+                  console.log('searchedExercises:', searchedExercises)
+                }
+              }}>
               Search
             </Button>
             <IconButton
