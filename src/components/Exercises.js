@@ -41,7 +41,7 @@ const Exercises = ({
         bgcolor="#212122"
         p="50px"
         gap="20px"
-        sx={{ width: '100%' }}>
+        sx={{ width: '100vw' }}>
         <Typography
           variant="h3"
           sx={{ color: '#fff', textAlign: 'center', mb: '30px' }}>
@@ -49,7 +49,7 @@ const Exercises = ({
           <br />
           Should Know
         </Typography>
-        <Grid container spacing={4} justifyContent="center">
+        <Grid container justifyContent="center">
           {bodyParts.length !== 0
             ? bodyParts.map((bodyPart, index) => {
                 return (
@@ -70,7 +70,11 @@ const Exercises = ({
                     <Box
                       component={'a'}
                       href="#exercises"
-                      sx={{ textDecoration: 'none', color: '#fff' }}>
+                      sx={{
+                        textDecoration: 'none',
+                        color: '#fff',
+                        width: 'fit-content',
+                      }}>
                       <img
                         src={imgSrc[index]}
                         alt="neck"

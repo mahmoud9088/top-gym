@@ -64,7 +64,7 @@ const HomeSlider = () => {
     }, 1000)
   }
   return (
-    <Box>
+    <Box sx={{ position: 'relative', width: '100vw', height: '895px' }}>
       <AutoPlaySwipeableViews
         index={activeStep}
         onChangeIndex={handleStepChange}
@@ -73,16 +73,17 @@ const HomeSlider = () => {
         {images.map((step, index) => (
           <div>
             {Math.abs(activeStep - index) <= 2 ? (
-              <Box position="relative">
+              <Box
+                sx={{
+                  position: 'relative',
+                  width: '100%',
+                  overflow: 'hidden',
+                }}>
                 <Box
                   key={step.label}
                   component="img"
                   sx={{
-                    overflow: 'hidden',
-                    height: '100vh',
-                    display: 'block',
-                    width: 'auto',
-                    minWidth: '100vw',
+                    height: '100%',
                   }}
                   src={step.imgPath}
                   alt={step.label}
@@ -91,10 +92,10 @@ const HomeSlider = () => {
                   direction="column"
                   sx={{
                     position: 'absolute',
-                    bottom: '20%',
+                    bottom: '50%',
                     left: '50%',
                     transform: 'translate(-50%,0)',
-                    gap: '20px',
+                    gap: '30px',
                     justifyContent: 'center',
                     alignItems: 'center',
                   }}>
@@ -104,11 +105,11 @@ const HomeSlider = () => {
                       sx={{
                         color: 'white',
                         fontSize: {
-                          xl: '60',
-                          lg: '50px',
-                          md: '40px',
+                          xl: '80',
+                          lg: '60px',
+                          md: '45px',
                           sm: '30px',
-                          xs: '20px',
+                          xs: '15px',
                         },
                         fontWeight: '900',
                       }}>
@@ -136,10 +137,11 @@ const HomeSlider = () => {
         activeStep={activeStep}
         sx={(theme) => ({
           position: 'absolute',
-          top: '90%',
+          bottom: '20%',
           left: '50%',
           transform: 'translateX(-50%)',
           justifyContent: 'center',
+          alignItems: 'center',
           backgroundColor: 'transparent',
           color: '#fff',
           '& 	.MuiMobileStepper-dots': {

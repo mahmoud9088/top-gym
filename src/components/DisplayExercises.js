@@ -88,7 +88,7 @@ const DisplayExercises = ({ exercises, filterByBodyPart }) => {
         count={Math.ceil(filterByBodyPart.length / 6)} // you can use toFixed(0) to set the values after the dot to zero
         page={page}
         onChange={handleChange}
-        sx={{ width: 'fit-content', margin: 'auto' }}
+        sx={{ width: 'fit-content', margin: 'auto', paddingBottom: '20px' }}
       />
     </Box>
   )
